@@ -4,9 +4,13 @@ import random
 import os
 
 app = Flask(__name__)
-questions_file = os.path.join('/data_files', '_100 вопросов мастеру.xlsx')
-questions_df = pd.read_excel(questions_file)
-questions_list = questions_df['Question'].tolist()
+questions_df = pd.ExcelFile('/data_files/_100 вопросов мастеру.xlsx')
+questions_list = {}
+
+for sheet_name in questions_df.sheet_names:
+  questions_list[sheet_name] = pd.read_excel(questions_df, sheet_name, index_col=0)
+
+list(questions_list.keys())
 
 @app.route('/')
 def index():
