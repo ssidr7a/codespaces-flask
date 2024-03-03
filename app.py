@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, redirect
 import pandas as pd
 import random
 import os
+import openpyxl
 
 app = Flask(__name__)
 questions_file = os.path.join('data_files','_100 вопросов мастеру.xlsx')
