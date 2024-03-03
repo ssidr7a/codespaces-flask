@@ -1,10 +1,11 @@
 from flask import Flask, render_template, request, redirect
 import pandas as pd
 import random
+import os
 
 app = Flask(__name__)
-
-questions_df = pd.read_excel('_100 вопросов мастеру.xlsx')
+questions_file = os.path.join('/data_files', '_100 вопросов мастеру.xlsx')
+questions_df = pd.read_excel(questions_file)
 questions_list = questions_df['Question'].tolist()
 
 @app.route('/')

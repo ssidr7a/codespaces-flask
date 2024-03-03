@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Панель вопросов</title>
+    <title>Вопрос дня</title>
 </head>
 <body>
-    <h1>Панель вопросов</h1>
-    <h2>{{ question }}</h2>
+    <h1>Вопрос дня</h1>
+    <p>{{ question }}</p>
     <form action="/new_question" method="post">
-        <button type="submit">Новый вопрос</button>
+        <input type="submit" value="Получить новый вопрос">
     </form>
 </body>
 </html>
