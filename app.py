@@ -4,7 +4,7 @@ import random
 
 app = Flask(__name__)
 
-questions_df = pd.read_excel('questions.xlsx')
+questions_df = pd.read_excel('_100 вопросов мастеру.xlsx')
 questions_list = questions_df['Question'].tolist()
 
 @app.route('/')
