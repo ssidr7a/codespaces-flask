@@ -3,16 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home page</title>
+    <title>Главная</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .card {
+            background-color: #f4f4f4;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 5px;
+            box-shadow: 2px 2px 5px #888888;
+        }
+        a {
+            text-decoration: none;
+            color: #007bff;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
-    <h1>Home page</h1>
+    <h1>Главная</h1>
     {% for file in list_excel %}
         <div class="card">
             <a href="document/{{file}}">{{file}}</a>
         </div>
     {% endfor %}
     <hr>
-    <a href="/upload">Upload new .xlsx file</a>
+    <a href="/upload">Загрузить .xlsx файл со списком товаров</a>
 </body>
 </html>
