@@ -3,26 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
     <title>{{name}}</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
-        .card {
-            background-color: #f4f4f4;
-            padding: 10px;
-            margin: 10px;
-            border-radius: 5px;
-            box-shadow: 2px 2px 5px #888888;
-        }
-        a {
-            text-decoration: none;
-            color: #007bff;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-    </style>
 </head>
 <body>
     <a href="/">К списку всех документов</a>
