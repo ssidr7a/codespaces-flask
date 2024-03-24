@@ -4,7 +4,6 @@ import pandas as pd
 
 app = Flask(__name__)
 
-
 @app.route('/')
 def home():
     files_path = 'file_upload_flask/uploaded_files/'
@@ -35,7 +34,8 @@ def get_sheet(name,list):
         data_frame_dict[sheet_name] = pd.read_excel(xls, sheet_name, index_col=0)
 
     df = data_frame_dict[list]
-    return df.to_html(header="true", table_id="table")
+    
+    return render_template('sheet.html')
     # return f'Путь {name}/{list}'
 
 
