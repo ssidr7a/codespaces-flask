@@ -46,5 +46,5 @@ def delete(id):
 
 @app.route('/news/<int:id>')
 def news(id):
-    ...
-    return 'Пока ещё в разработке. (планируется страница, где будет сама новость)'
+    post = session.query(Post).filter_by(id=id).one()  # Получаем пост по ID
+    return render_template('news.html', post=post)
