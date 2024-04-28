@@ -3,8 +3,91 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="static/main.css">
     <title>{{ post.title }}</title>
+    <style>body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+      
+      /* Стили для меню */
+      #menu {
+        background-color: #571428;
+        color: white;
+        padding: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      
+      #menu a {
+        color: white;
+        text-decoration: none;
+        padding: 5px;
+      }
+      
+      /* Стили для навигации */
+      nav ul {
+        list-style: none;
+        padding: 0;
+    }
+    
+    nav ul li {
+        display: inline;
+        margin-right: 20px;
+    }
+      
+      /* Стили для заголовка */
+      #heading {
+        padding: 10px;
+      }
+      
+      /* Стили для контейнера новостей */
+    .container {
+        max-width: 1200px;
+        margin: 40px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+      /* Стили для заголовка новости */
+      .container h2 {
+        margin-top: 0;
+      }
+    
+      .container a {
+        margin-top: 0;
+      }
+      
+      /* Стили для удаления новости */
+    #delete {
+        float: right;
+      }
+    
+    #branding h1 {
+        margin: 0;
+        padding: 0px 0px 0px 20px;
+    }
+    
+    a {
+        text-decoration: none; /* Убираем подчеркивание текста ссылки */
+        color: #ad154d; /* Синий цвет текста ссылки */
+        transition: color 0.3s ease; /* Плавное изменение цвета при наведении */
+      }
+      
+      a:hover {
+        color: #ad154d; /* Темно-синий цвет текста при наведении */
+      }
+    
+    .main {
+        max-width: 90%;
+        margin: 40px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }</style>
 </head>
 <body>
     <header>
