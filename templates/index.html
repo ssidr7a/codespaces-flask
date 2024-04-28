@@ -1,14 +1,35 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Вопрос дня</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/main.css">
+    <title>Document</title>
 </head>
 <body>
-    <h1>Вопрос дня</h1>
-    <p>{{ question }}</p>
-    <form action="/new_question" method="post">
-        <input type="submit" value="Получить новый вопрос">
-    </form>
+    <header>
+        <div id = "menu">
+            <div id="branding">
+                <h1><a href="/"></a>Школа | Новости</a></h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="/add">Добавить запись</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <div id="heading">
+        <h1>Лента новостей</h1>
+    </div>
+    <div class="main">
+        {%for i in posts%}
+            <div class = "container">
+                <h2><a href="/news/{{i.id}}">{{i.title}}</a></h2>
+                <p>{{i.content}}</p>
+                <a href="/delete/{{i.id}}" id="delete">Удалить</a>
+            </div>
+        {%endfor%}
+    </div>
 </body>
 </html>
