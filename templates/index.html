@@ -4,32 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="static/main.css">
-    <title>Школа | Новости</title>
+    <title>Школьные новости</title>
 </head>
 <body>
     <header>
-        <div id = "menu">
-            <div id="branding">
-                <h1><a href="/"></a>Школа | Новости</a></h1>
-            </div>
+        <div id="branding">
+            <h1><a href="/">Школа | Территория Медиа</a></h1>
             <nav>
                 <ul>
-                    <li><a href="/add">Добавить запись</a></li>
+                    <li><a href="/add">Предложить новость</a></li>
                 </ul>
             </nav>
         </div>
     </header>
     <div id="heading">
-        <h1>Лента новостей</h1>
+        <h1>Добро пожаловать!</h1>
+        <h3 class="hello">
+            Это новостной сайт нашей школы.<br>
+            Здесь вы можете ознакомиться о последних событиях, что происходят в нашем учреждении.
+        </h3>
+        <p class="aligncenter">
+            <img src="https://on-desktop.com/wps/Drawn_wallpapers_Schoolyard_011333_.jpg" width = "1000"; height ="500"; style="border-radius: 20px;">
+        </p>
     </div>
+    <hr size="3" color="#1A659E">
+    <br>
+    <h1 class="head"><U>Последние новости</U></h1>
     <div class="main">
         {%for i in posts%}
             <div class = "container">
                 <h2><a href="/news/{{i.id}}">{{i.title}}</a></h2>
                 <p>{{i.content}}</p>
-                <a href="/delete/{{i.id}}" id="delete">Удалить</a>
             </div>
         {%endfor%}
     </div>
+    <footer>
+        <h3>Наш телеграмм</h3>
+        <hr color="#5697C9">
+        <script async src="https://telegram.org/js/telegram-widget.js?22" data-telegram-share-url="https://t.me/school_75" data-comment="Наш телеграмм" data-size="large" data-text="notext"></script>
+    </footer>
 </body>
 </html>

@@ -6,20 +6,27 @@ body {
   }
   
   /* Стили для меню */
-  #menu {
-    background-color: #571428;
+#branding {
+    text-align: center;
+    background-color: #1A659E;
     color: white;
     padding: 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-  }
+}
   
-  #menu a {
+#branding a {
+    align-items: center;
+    text-align: center;
     color: white;
     text-decoration: none;
     padding: 5px;
   }
+
+header {
+  text-align: center;
+}
   
   /* Стили для навигации */
   nav ul {
@@ -37,6 +44,20 @@ nav ul li {
     padding: 10px;
   }
   
+  .head {
+    color: #003049;
+    margin: 10px 280px 20px;
+  }
+
+  #heading h1 {
+    color: #003049;
+    margin: 10px 280px 20px;
+  }
+
+.hello {
+  margin: 10px 415px 20px;
+  color: #1A659E;
+}
   /* Стили для контейнера новостей */
 .container {
     max-width: 1200px;
@@ -47,39 +68,66 @@ nav ul li {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
   /* Стили для заголовка новости */
-  .container h2 {
-    margin-top: 0;
-  }
+.container h2 {
+  margin-top: 0;
+}
 
-  .container a {
-    margin-top: 0;
-  }
-  
+.container a {
+  margin-top: 0;
+}
+
+.container p {
+  margin-top: 0;
+  color: #969696;
+}
   /* Стили для удаления новости */
 #delete {
     float: right;
   }
 
 #branding h1 {
+    align-items: center;
     margin: 0;
     padding: 0px 0px 0px 20px;
+    text-align: center;
 }
 
 a {
     text-decoration: none; /* Убираем подчеркивание текста ссылки */
-    color: #ad154d; /* Синий цвет текста ссылки */
+    color: #003049; /* Синий цвет текста ссылки */
     transition: color 0.3s ease; /* Плавное изменение цвета при наведении */
   }
   
   a:hover {
-    color: #ad154d; /* Темно-синий цвет текста при наведении */
+    color: #1A659E; /* Темно-синий цвет текста при наведении */
   }
 
 .main {
-    max-width: 90%;
-    margin: 40px auto;
+    max-width: 100%;
+    margin: 40px auto 0px;
     padding: 20px;
-    background-color: #fff;
+    background-color: #B1DEFF;
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+footer {
+    background-color: #333; /* Цвет фона для футера */
+    color: white; /* Цвет текста */
+    padding: 10px; /* Отступы внутри футера */
+    text-align: center; /* Выравнивание текста по центру */
+}
+    
+footer p {
+    margin: 0; /* Убираем стандартные отступы вокруг параграфа */
+}
+
+.aligncenter {
+  text-align: center;
+}
+
+footer {
+  padding: 10px 20px;
+  background: #003049;
+  color: #5697C9;
 }

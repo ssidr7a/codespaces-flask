@@ -2,6 +2,7 @@ from sqlalchemy import create_engine, Column, Integer, String, Text
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.orm import declarative_base
 from flask import Flask, render_template, request, redirect
+import random
 
 engine = create_engine('sqlite:///blog.bd')
 Base = declarative_base()
