@@ -1,47 +1,60 @@
-from flask import Flask, render_template, request, redirect
-import pandas as pd
-import os
+from flask import Flask, render_template, request, redirect, url_for, flash
+from models import db, Category, Note
 
 app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///notes.db'
+app.config['SECRET_KEY'] = 'your_secret_key_here'
+db.init_app(app)
 
-def load_file(name):
-    file_path = os.path.join('uploads', f'{name}.xlsx')
-    df = pd.ExcelFile(file_path)
-    sheet_names = df.sheet_names
-    return sheet_names
-
-def load_products(name, sheet_index):
-    products = []
-    file_path = os.path.join('uploads', f'{name}.xlsx')
-    df = pd.read_excel(file_path, sheet_name = sheet_index)
-    for index, row in df.iterrows():
-        products.append({
-            'title': row[1],
-            'price': row[2]
-        })
-    return products
-
-def get_names():
-    names = []
-    for file in os.listdir('uploads'):
-        if file.endswith('.xlsx'):
-            names.append(file.replace('.xlsx', ''))
-    return names
 
 @app.route('/')
 def index():
-    names = get_names()
-    return render_template('home.html', names=names)
+    notes = Note.query.all()
+    return render_template('index.html', notes=notes)
 
-@app.route('/file/<name>')
-def sheet(name):
-    sheet_names_list = load_file(name)
-    return render_template('file.html', sheet_names=sheet_names_list, name=name)
+@app.route('/note/<int:note_id>')
+def note(note_id):
+    note = Note.query.get_or_404(note_id)
+    return render_template('note.html', note=note)
 
-@app.route('/sheet/<name>/<item>')
-def product(name,item):
-    products_list = load_products(name,item)
-    return render_template('products.html', products=products_list, name=name)
+@app.route('/category/<int:category_id>')
+def category(category_id):
+    category = Category.query.get_or_404(category_id)
+    return render_template('category.html', category=category)
 
-if __name__ == '__main__':
-    app.run(debug=True)
+@app.route('/add', methods=['GET', 'POST'])
+def add():
+    if request.method == 'POST':
+        title = request.form['title']
+        content = request.form['content']
+        category_id = request.form['category']
+        note = Note(title=title, content=content, category_id=category_id)
+        db.session.add(note)
+        db.session.commit()
+        flash('Заметка успешно добавлена!')
+        return redirect(url_for('index'))
+    categories = Category.query.all()
+    return render_template('add.html', categories=categories)
+
+@app.route('/edit/<int:note_id>', methods=['GET', 'POST'])
+def edit(note_id):
+    note = Note.query.get_or_404(note_id)
+    if request.method == 'POST':
+        note.title = request.form['title']
+        note.content = request.form['content']
+        note.category_id = request.form['category']
+        db.session.commit()
+        flash('Заметка успешно обновлена!')
+        return redirect(url_for('index'))
+    categories = Category.query.all()
+    return render_template('edit.html', note=note, categories=categories)
+
+@app.route('/delete/<int:note_id>', methods=['GET', 'POST'])
+def delete(note_id):
+    note = Note.query.get_or_404(note_id)
+    if request.method == 'POST':
+        db.session.delete(note)
+        db.session.commit()
+        flash('Заметка удалена')
+        return redirect(url_for('index'))
+    return render_template('delete.html', note=note)
